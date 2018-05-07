@@ -2,6 +2,7 @@ page 123456702 "Seminar List"
 {
     PageType = List;
     SourceTable = Seminar;
+    UsageCategory=Lists;
 
     layout
     {
