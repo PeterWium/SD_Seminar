@@ -45,6 +45,15 @@ page 123456702 "Seminar List"
         }
         area(factboxes)
         {
+            systempart("Links"; Links)
+            {
+                Caption = 'Links';
+            }
+
+            systempart("Notes"; Notes)
+            {
+                Caption = 'Notes';
+            }
         }
     }
 

@@ -9,8 +9,8 @@ table 123456704 "Seminar Comment Line"
         field(10;"Table Name";Option)
         {
             
-            OptionMembers="Seminar","Seminar Registration Header","Posted Seminar Reg. Header";
-            OptionCaption='Seminar,Seminar Registration Header,Posted Seminar Reg. Header';
+            OptionMembers="Seminar","Seminar Registration","Posted Seminar Reg. Header";
+            OptionCaption='Seminar,Seminar Registration,Posted Seminar Reg. Header';
             DataClassification = ToBeClassified;
         }
         field(20;"Document Line No.";Integer)
