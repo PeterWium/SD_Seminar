@@ -11,8 +11,9 @@ begin
     ResLedgerEntry."CSD_Seminar No.":=ResJournalLine."CSD_Seminar No.";
     ResLedgerEntry."CSD_Seminar Registration No.":=ResJournalLine."CSD_Seminar Registration No."; 
 end;
+
 [EventSubscriber(ObjectType::Page, 344, 'OnAfterNavigateFindRecords', '', true, true)]
-local procedure ExtendNavigateOnAfterNavigateFindRecords(DocumentEntry : Record  "Document Entry";DocNoFilter : Text;PostingDateFilter : Text);
+local procedure ExtendNavigateOnAfterNavigateFindRecords(var DocumentEntry : Record  "Document Entry";DocNoFilter : Text;PostingDateFilter : Text);
 var
   SeminarLedgerEntry : record "Seminar Ledger Entry";
   PostedSeminarRegHeader : record "Posted Seminar Reg. Header";
@@ -56,12 +57,12 @@ begin
         NextEntryNo := 1;
       Init;
       "Entry No." := NextEntryNo;
-      "Table ID" := Database::"Posted Seminar Reg. Header";
+      "Table ID" := Database::"Seminar Ledger Entry";
       "Document Type" := 0;
       "Table Name" := COPYSTR(SeminarLedgerEntry.TableCaption,1,MAXSTRLEN("Table Name"));
       "No. of Records" := DocNoOfRecords;
       Insert;
-      SelectLatestVersion;
+      //SelectLatestVersion;
     end;
   end;
 end;
@@ -75,9 +76,15 @@ var
 begin
     case TableID of
       Database::"Posted Seminar Reg. Header": 
-        Page.Run(0,PostedSeminarRegHeader); 
+        begin
+          PostedSeminarRegHeader.SetFilter("No.",DocNoFilter);
+          Page.Run(page::"Posted Seminar Registration",PostedSeminarRegHeader); 
+        end;
       Database::"Seminar Ledger Entry": 
-        Page.Run(0,SeminarLedgerEntry);
+        begin
+          SeminarLedgerEntry.SetFilter("Document No.",DocNoFilter);
+          Page.Run(Page::"Seminar Ledger Entries",SeminarLedgerEntry);
+        end;
     end;
 end;
 }

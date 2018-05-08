@@ -2,7 +2,8 @@ report 123456701 SeminarRegParticipantList
 {
     Caption='Seminar Reg.- Participant List';
     DefaultLayout=RDLC;
-    RDLCLayout='./Layouts/SeminarRegParticipantList.rdl';
+    //RDLCLayout='./Layouts/SeminarRegParticipantList.rdl';
+    RDLCLayout='./Layouts/SemRegParticipant.rdl';
     UsageCategory=ReportsAndAnalysis;
     dataset
     {

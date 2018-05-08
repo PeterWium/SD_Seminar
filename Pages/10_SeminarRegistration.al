@@ -7,7 +7,7 @@ page 123456710 "Seminar Registration"
     //     - Added Post Action  
 
     Caption = 'Seminar Registration';
-    PageType = Document;
+    //PageType = Document;
     SourceTable = "Seminar Registration Header";
 
     layout
